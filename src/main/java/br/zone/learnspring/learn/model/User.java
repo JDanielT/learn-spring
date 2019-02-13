@@ -1,6 +1,7 @@
 package br.zone.learnspring.learn.model;
 
 import lombok.Data;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,12 +18,14 @@ public class User {
     private Long id;
 
     @Email
-    private String email;
+    private String username;
 
     @Size(min = 8, max = 15)
     private String password;
 
     @NotBlank
     private String name;
+
+    private boolean status = true;
 
 }

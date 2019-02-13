@@ -5,10 +5,7 @@ import br.zone.learnspring.learn.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Map;
@@ -25,7 +22,12 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
-    @PostMapping
+    @GetMapping
+    public ResponseEntity list(){
+        return ResponseEntity.ok(userRepository.findAll());
+    }
+
+    @PostMapping("/register")
     public ResponseEntity save(@RequestBody @Valid User user, Errors errors){
         if(errors.hasErrors()){
             return ResponseEntity.badRequest().body(getFieldsErrors(errors));
