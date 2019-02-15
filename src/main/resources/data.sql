@@ -1,1 +1,1 @@
-INSERT INTO user (username, password, name, status) VALUES ('jdanielts1@gmail.com', '12345', 'Daniel', true);
+INSERT INTO user (username, password, status) VALUES ('jdanielts1@gmail.com', '12345', true);

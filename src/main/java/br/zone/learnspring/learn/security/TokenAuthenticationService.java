@@ -17,7 +17,7 @@ public class TokenAuthenticationService {
     // EXPIRATION_TIME = 10 dias
     static final long EXPIRATION_TIME = 860_000_000;
     static final String SECRET = "53cr3t";
-    static final String HEADER_STRING = "Authorization";
+    static final String HEADER_STRING = "authorization";
 
     static void addAuthentication(HttpServletResponse response, String username) {
         String JWT = Jwts.builder()
@@ -27,6 +27,7 @@ public class TokenAuthenticationService {
                 .compact();
 
         response.addHeader(HEADER_STRING, JWT);
+        response.addHeader("access-control-expose-headers", HEADER_STRING);
     }
 
     static Authentication getAuthentication(HttpServletRequest request) {
